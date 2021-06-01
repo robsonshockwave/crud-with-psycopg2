@@ -1,30 +1,40 @@
-from view import view
+###############################################################################
 from model import Pedido
-
+from view import view
+###############################################################################
 class Controle:
     def inicio(self):
-        opcao = view.inicio()
-        while opcao != 5:
-            if opcao == 1:
-                valores = view.coletadadosPedido()
+        escolhido = view.inicio()
+        while escolhido != 5:
+            # Inserir pedido
+            if escolhido == 1:
+                valores = view.coletaDadosPedido()
                 dados = Pedido.criaPedido(valores)
                 status = Pedido.cadastraPedido(dados)
+                ###
                 view.imprimeStatus(status)
-                opcao = view.inicio()
-            elif opcao == 2:
+                escolhido = view.inicio()
+            # Remover pedido
+            elif escolhido == 2:
                 orderid = view.coletaId()
                 status = Pedido.deletaPedido(orderid)
+                ###
                 view.imprimeStatus(status)
-                opcao = view.inicio()
-            elif opcao == 3:
+                escolhido = view.inicio()
+            # Buscar pedido
+            elif escolhido == 3:
                 orderid = view.coletaId()
                 registro = Pedido.consultaPedido(orderid)
+                ###
                 view.imprimePedido(registro)
-                opcao = view.inicio()
-            elif opcao == 4:
-                valores = view.coletadadoUpdate()
+                escolhido = view.inicio()
+            # Alterar pedido
+            elif escolhido == 4:
+                valores = view.coletaDadoAtualizar()
                 status = Pedido.atualizaPedido(valores)
+                ###
                 view.imprimeStatus(status)
-                opcao = view.inicio()
+                escolhido = view.inicio()
                 controller = Controle()
                 controller.inicio()
+###############################################################################
