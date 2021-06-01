@@ -106,5 +106,6 @@ class View():
                 print(status)
             else:
                 print('algo deu errado')
-                view = View()
+
+view = View()
 ###############################################################################
