@@ -86,7 +86,7 @@ class Pedido():
     def atualizaPedido(l):
         stringSQL = 'UPDATE northwind.orders SET %s = %s WHERE orderid = %s'
         parametros = ((AsIs(l[1])), str(l[2]), int(l[0]))
-        if l[1] == 'customerid' or l[1] == 'employeeid':
+        if l[1] == 'employeeid' or l[1] == 'customerid' :
             try:
                 if l[1] == 'customerid':
                     if Costumers.consultaCostumers(l[2]):
